@@ -10,7 +10,7 @@ var timerCount = 75;
 var currentQuestion = 0;
 var rightAnswers;
 var count = 0;
-
+var score = 0;
 
 function startTimer(){
     //sets timer
@@ -91,12 +91,12 @@ function appendQuestion(count) {
             answerButton.addEventListener("click", function(event){
                 event.preventDefault();
                 // console.log(target);
-                console.log(event);
-                console.log(event.target.textContent)
                 evalChosenAnswer(event.target.textContent);
                 count++;
             }); 
         }
+    } else {
+        endQuiz();
     }
 }
 
@@ -111,16 +111,26 @@ function startQuiz(){
 };
 
 function nextQuestion(){
-
+    removeAllChildNodes(quizSection);
+    count++;
+    appendQuestion(count);
 };
 
 // evaluating the chosen answers truthyness
 function evalChosenAnswer(target){
-        
+    var newScore;
+    if (target === questionArray[count].answer) {
+        newScore = score + 15;
+    } else {
+        newScore = score - 5;    
+    }
+    nextQuestion();
 };
 
 // stop quiz if time runs out
 function endQuiz(){
+    let results = document.querySelector(".results")
+    
 
 };
 
