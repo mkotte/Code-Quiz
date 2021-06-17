@@ -78,14 +78,25 @@ function appendQuestion(count) {
         quizSection.appendChild(question);
 
         let answersWrapper = document.createElement('div');
+        quizSection.appendChild(answersWrapper);
+        console.log(1)
         // answers/choices created here
-        for (let i = 0; i > 4; i++) {
+        for (let i = 0; i < 4; i++) {
             let answerButton = document.createElement('button');
             answerButton.setAttribute("class", "answer");
             answerButton.textContent = questionArray[count].answers[i];
             answersWrapper.appendChild(answerButton);
+            console.log(1)
+            // TODO: add event listener for answer button and then answer evaluation
+            answerButton.addEventListener("click", function(event){
+                event.preventDefault();
+                // console.log(target);
+                console.log(event);
+                console.log(event.target.textContent)
+                evalChosenAnswer(event.target.textContent);
+                count++;
+            }); 
         }
-        // TODO: add event listener for answer button and then answer evaluation
     }
 }
 
