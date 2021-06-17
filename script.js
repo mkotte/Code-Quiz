@@ -2,13 +2,15 @@
 var timerEl = document.getElementById('time-left');
 var startButton = document.getElementById('start-btn');
 var quizSection = document.querySelector(".quizSection")
-var quiz =  document.querySelector(".quiz")
+var quiz =  document.querySelector(".quiz");
+var answer = document.querySelector(".answer");
 
 var timer;
 var timerCount = 75;
 var currentQuestion = 0;
 var rightAnswers;
 var count = 0;
+
 
 function startTimer(){
     //sets timer
@@ -75,8 +77,15 @@ function appendQuestion(count) {
         question.textContent = questionArray[count].question
         quizSection.appendChild(question);
 
+        let answersWrapper = document.createElement('div');
         // answers/choices created here
-
+        for (let i = 0; i > 4; i++) {
+            let answerButton = document.createElement('button');
+            answerButton.setAttribute("class", "answer");
+            answerButton.textContent = questionArray[count].answers[i];
+            answersWrapper.appendChild(answerButton);
+        }
+        // TODO: add event listener for answer button and then answer evaluation
     }
 }
 
