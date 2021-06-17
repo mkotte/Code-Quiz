@@ -1,11 +1,13 @@
 //variables
 var timerEl = document.getElementById(time-left);
 var startButton = document.getElementById(start-btn);
+var quiz =  document.querySelector(".quiz")
+
 var timer;
 var timerCount = 75;
-var currentQuestion;
+var currentQuestion = 0;
 var rightAnswers;
-
+var count;
 
 function startTimer(){
     //sets timer
@@ -17,8 +19,8 @@ function startTimer(){
             endQuiz();
         }
     }, 1000);
-    startQuiz()
-}
+    
+};
 
 
 // array of objects containting the quiz material
@@ -50,13 +52,46 @@ var questionArray = [
     }
 ];
 
+// renders on page load
+function renderStartPage(){
+
+};
+
 // populate questions here through array
-function startQuiz()
+function startQuiz(){ 
+    quiz.innerHTML = "";
+
+    startTimer();
+};
+
+function nextQuestion(){
+
+};
+
+// evaluating the chosen answers truthyness
+function evalChosenAnswer(target){
+        
+};
 
 // stop quiz if time runs out
-function endQuiz()
+function endQuiz(){
+
+};
 
 // display results of quiz
-function showResults()
+function showResults(){
+    
+};
 
-startButton.addEventListener("click", startTimer)
+// saves the score to the local host and allows users to input their name
+function saveScore(){
+
+};
+
+
+function showScore(){
+
+};
+
+startButton.addEventListener("click", startTimer);
+nextButton.addEventListener("click", nextQuestion);
