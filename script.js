@@ -1,13 +1,14 @@
 //variables
-var timerEl = document.getElementById(time-left);
-var startButton = document.getElementById(start-btn);
+var timerEl = document.getElementById('time-left');
+var startButton = document.getElementById('start-btn');
+var quizSection = document.querySelector(".quizSection")
 var quiz =  document.querySelector(".quiz")
 
 var timer;
 var timerCount = 75;
 var currentQuestion = 0;
 var rightAnswers;
-var count;
+var count = 0;
 
 function startTimer(){
     //sets timer
@@ -54,14 +55,39 @@ var questionArray = [
 
 // renders on page load
 function renderStartPage(){
+    //event listener for initial start button
+    startButton.addEventListener("click", function(event){
+        event.preventDefault;
+        startTimer();
+        startQuiz();
+    });
 
+    // quiz instructions
+    var quizIntro = document.createElement("p");
+    quizIntro.textContent = "Welcome to the code quiz. Answer the questions as quickly and accurately as your able too and don't let the timer run out!"
+    quiz.appendChild(quizIntro);
 };
+
+function appendQuestion(count) {
+    if (count !== 5){
+        // questions created here
+        var question = document.createElement("p")
+        question.textContent = questionArray[count].question
+        quizSection.appendChild(question);
+
+        // answers/choices created here
+
+    }
+}
+
 
 // populate questions here through array
 function startQuiz(){ 
-    quiz.innerHTML = "";
-
+    removeAllChildNodes(quizSection);
     startTimer();
+    appendQuestion(count);
+
+
 };
 
 function nextQuestion(){
@@ -93,5 +119,14 @@ function showScore(){
 
 };
 
-startButton.addEventListener("click", startTimer);
-nextButton.addEventListener("click", nextQuestion);
+//removes all html children nodes from the parent parameter
+function removeAllChildNodes(parent){
+    while(parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
+
+
+// nextButton.addEventListener("click", nextQuestion);
+
+renderStartPage();

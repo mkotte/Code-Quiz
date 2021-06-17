@@ -6,17 +6,24 @@
     </head>
     <body>
         <!-- <a href="#">View High Scores</a> -->
-        <h1 class="timer">Time Remaining: <span id="time-left">75</span></h1>
-        <section class="quiz">
-                <!-- <h1>Coding Quiz</h1>-->
-                <!-- <p>Instructions</p> -->
-                <button clas="btn" id="start-btn">Start</button>
-        </section>
+        <nav>
+            <button class="btn" id="scores-btn">Scores</button>
+            <h1>Code Quiz</h1>
+
+            <h2 class="timer">Time Remaining: <span id="time-left">75</span></h2>    
+        </nav>
+        <main>
             
-        <section class="results">
-            <div class="score">
-             </div>
-        </section>
+            <section class="quizSection">
+                    <div class="quiz"></div>
+                    <button class="btn" id="start-btn">Start</button>
+            </section>
+                
+            <section class="results">
+                <div class="score"></div>
+            </section>
+
         </main>
     </body>
+    <script src="script.js"></script>
 </html>
