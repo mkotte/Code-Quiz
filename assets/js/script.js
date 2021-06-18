@@ -2,9 +2,11 @@
 var timerContainer = document.querySelector('.timer')
 var timerEl = document.getElementById('time-left');
 var startButton = document.getElementById('start-btn');
+var scoreButton = document.getElementById("scores-btn")
 var quizSection = document.querySelector(".quizSection")
 var quiz =  document.querySelector(".quiz");
 var answer = document.querySelector(".answer");
+var results = document.querySelector(".results")
 
 var timer;
 var timerCount = 75;
@@ -14,6 +16,7 @@ var count = 0;
 var quizCount = 1;
 var score = 0;
 var newScore;
+
 
 function startTimer(){
     //sets timer
@@ -149,7 +152,7 @@ function endQuiz(){
     initialsLabel.append(initialsInput);
 
     let resetButton = document.createElement('button');
-    resetButton.textContent="Reset"
+    resetButton.textContent="Enter"
     resetButton.setAttribute("class", "reset-btn")
     results.append(resetButton);
 
@@ -179,12 +182,41 @@ function saveScore(){
     let initials = document.getElementById("initials-input").value; 
     localStorage.setItem(`initials-${quizCount}`, initials);
     localStorage.setItem(`score-${quizCount}`, newScore);
-    quizCount++;
+    newCount = quizCount + 1;
 };
 
 
 function showScore(){
-    
+    removeAllChildNodes(timerContainer);
+    removeAllChildNodes(quizSection);
+    removeAllChildNodes(results);
+
+    let main = document.querySelector(".main");
+    let scoresContainer = document.createElement('div');
+    main.appendChild(scoresContainer);
+    let scoresDescription = document.createElement("h2");
+    scoresDescription.textContent = "Your high scores:";
+    scoresContainer.appendChild(scoresDescription)
+
+    for (i = 1; i <= quizCount; i++){
+        let score = document.createElement('p')
+        let scoreInitials = localStorage.getItem('initials-'+i);
+        let scoreValue = localStorage.getItem('score-'+i);
+        score.textContent = scoreInitials + " " + scoreValue
+        scoresContainer.appendChild(score);
+
+    }
+
+    let resetButton = document.createElement('button');
+    resetButton.textContent="Reset"
+    resetButton.setAttribute("class", "reset-btn")
+    main.appendChild(resetButton);
+    resetButton.addEventListener("click", function(event){
+        event.preventDefault();
+        location.reload();
+    });
+
+
 };
 
 //removes all html children nodes from the parent parameter
@@ -194,7 +226,7 @@ function removeAllChildNodes(parent){
     }
 }
 
-
+scoreButton.addEventListener("click", showScore)
 // nextButton.addEventListener("click", nextQuestion);
 
 renderStartPage();
