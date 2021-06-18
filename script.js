@@ -1,4 +1,5 @@
 //variables
+var timerContainer = document.querySelector('.timer')
 var timerEl = document.getElementById('time-left');
 var startButton = document.getElementById('start-btn');
 var quizSection = document.querySelector(".quizSection")
@@ -11,6 +12,7 @@ var currentQuestion = 0;
 var rightAnswers;
 var count = 0;
 var score = 0;
+var newScore;
 
 function startTimer(){
     //sets timer
@@ -19,10 +21,8 @@ function startTimer(){
         timerEl.textContent = timerCount;
         if (timerCount >= 0){
             clearInterval(timer);
-            endQuiz();
         }
     }, 1000);
-    
 };
 
 
@@ -118,7 +118,7 @@ function nextQuestion(){
 
 // evaluating the chosen answers truthyness
 function evalChosenAnswer(target){
-    var newScore;
+    
     if (target === questionArray[count].answer) {
         newScore = score + 15;
     } else {
@@ -129,10 +129,25 @@ function evalChosenAnswer(target){
 
 // stop quiz if time runs out
 function endQuiz(){
-    let results = document.querySelector(".results")
+    // stopping the timer and adding it to score
+    function stopTimer(){
+        newScore = + timerCount;
+        console.log(newScore); 
+        console.log(timerContainer)
+        removeAllChildNodes(timerContainer)
+    };
+    stopTimer();
+    let results = document.querySelector(".results");
+    let finishedMessage = document.createElement("p");
+    finishedMessage.textContent = "Congratulations you have finished your code quiz!"
+    results.appendChild(finishedMessage);
+    let scoreDisplay = document.querySelector(".score");
+    scoreDisplay.textContent = `Your Score: ${newScore}`; 
     
-
+    
 };
+
+
 
 // display results of quiz
 function showResults(){
