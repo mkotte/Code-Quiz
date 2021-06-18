@@ -7,6 +7,7 @@ var quizSection = document.querySelector(".quizSection")
 var quiz =  document.querySelector(".quiz");
 var answer = document.querySelector(".answer");
 var results = document.querySelector(".results")
+var buttonWrapper = document.createElement("div")
 
 var timer;
 var timerCount = 75;
@@ -141,10 +142,12 @@ function endQuiz(){
     results.appendChild(finishedMessage);
     let scoreDisplay = document.querySelector(".score");
     scoreDisplay.textContent = `Your Score: ${newScore}`;
+    let initialsWrapper = document.createElement("div");
+    results.appendChild(initialsWrapper);
     let initialsLabel = document.createElement("label");
     initialsLabel.setAttribute("for","initials");
     initialsLabel.textContent = "Please enter your initials!";
-    results.appendChild(initialsLabel)
+    initialsWrapper.appendChild(initialsLabel)
     let initialsInput = document.createElement("input");
     initialsInput.setAttribute("type","text");
     initialsInput.setAttribute("id", "initials-input");
@@ -154,7 +157,7 @@ function endQuiz(){
     let resetButton = document.createElement('button');
     resetButton.textContent="Enter"
     resetButton.setAttribute("class", "reset-btn")
-    results.append(resetButton);
+    initialsWrapper.append(resetButton);
 
     resetButton.addEventListener("click", function(event){
         event.preventDefault();
@@ -207,10 +210,11 @@ function showScore(){
 
     }
 
+    main.appendChild(buttonWrapper);
     let resetButton = document.createElement('button');
     resetButton.textContent="Reset"
     resetButton.setAttribute("class", "reset-btn")
-    main.appendChild(resetButton);
+    buttonWrapper.appendChild(resetButton);
     resetButton.addEventListener("click", function(event){
         event.preventDefault();
         location.reload();
