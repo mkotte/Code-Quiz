@@ -1,4 +1,4 @@
-# Code Quiz
+# Code-Quiz
 
 ## My Task
 
@@ -30,4 +30,25 @@ WHEN the game is over
 THEN I can save my initials and my score
 ```
 
+## Completed Work
+
+While creating this code quiz I:
+
+* Used html, css and javascript 
+
+* Implemented proper file structures
+
+* Completed all requested acceptance criteria
+
+* Properly committed and hosted the project on GitHub
+
+* Followed best practices as well as I was able too
+
+* Focused on functionality over styling
+
+## Links
+
+Deployed Application(GitHub Pages): https://mkotte.github.io/Code-Quiz
+
+GitHub Repository: https://github.com/mkotte/Code-Quiz
 
