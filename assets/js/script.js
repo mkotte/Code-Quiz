@@ -11,6 +11,7 @@ var timerCount = 75;
 var currentQuestion = 0;
 var rightAnswers;
 var count = 0;
+var quizCount = 1;
 var score = 0;
 var newScore;
 
@@ -143,7 +144,17 @@ function endQuiz(){
     finishedMessage.textContent = "Congratulations you have finished your code quiz!"
     results.appendChild(finishedMessage);
     let scoreDisplay = document.querySelector(".score");
-    scoreDisplay.textContent = `Your Score: ${newScore}`; 
+    scoreDisplay.textContent = `Your Score: ${newScore}`;
+    let initialsLabel = document.createElement("label");
+    initialsLabel.setAttribute("for","initials");
+    initialsLabel.textContent = "Please enter your initials!";
+    results.appendChild(initialsLabel)
+    let initialsInput = document.createElement("input");
+    initialsInput.setAttribute("type","text");
+    initialsInput.setAttribute("id", "initials-input");
+    initialsInput.setAttribute("name", "initials");
+    initialsLabel.append(initialsInput);
+
     let resetButton = document.createElement('button');
     resetButton.textContent="Reset"
     resetButton.setAttribute("class", "reset-btn")
@@ -151,6 +162,7 @@ function endQuiz(){
 
     resetButton.addEventListener("click", function(event){
         event.preventDefault();
+        saveScore();
         location.reload();
     })
 };
@@ -159,7 +171,8 @@ function endQuiz(){
 
 // display results of quiz
 function showResults(){
-    
+    removeAllChildNodes(timerContainer);
+    removeAllChildNodes(quizSection);
 };
 
 // saves the score to the local host and allows users to input their name
