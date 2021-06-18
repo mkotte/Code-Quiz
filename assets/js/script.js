@@ -131,13 +131,6 @@ function evalChosenAnswer(target){
 
 // stop quiz if time runs out
 function endQuiz(){
-    // stopping the timer and adding it to score
-    function stopTimer(){
-        newScore = newScore + timerCount;
-        console.log(newScore); 
-        console.log(timerContainer)
-        removeAllChildNodes(timerContainer)
-    };
     stopTimer();
     let results = document.querySelector(".results");
     let finishedMessage = document.createElement("p");
@@ -167,7 +160,13 @@ function endQuiz(){
     })
 };
 
-
+// stopping the timer and adding it to score
+function stopTimer(){
+        newScore = newScore + timerCount;
+        console.log(newScore); 
+        console.log(timerContainer)
+        removeAllChildNodes(timerContainer)
+};
 
 // display results of quiz
 function showResults(){
@@ -177,12 +176,15 @@ function showResults(){
 
 // saves the score to the local host and allows users to input their name
 function saveScore(){
-
+    let initials = document.getElementById("initials-input").value; 
+    localStorage.setItem(`initials-${quizCount}`, initials);
+    localStorage.setItem(`score-${quizCount}`, newScore);
+    quizCount++;
 };
 
 
 function showScore(){
-
+    
 };
 
 //removes all html children nodes from the parent parameter
