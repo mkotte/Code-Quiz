@@ -1,0 +1,28 @@
+nav {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px 0 20px 0;
+}
+
+
+
+h2{
+    text-align: center;
+    padding:3px;
+}
+
+p{
+    text-align: center;
+    padding: 3px;
+}
+
+div{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+button{
+    margin: 0px 3px;
+}
+
