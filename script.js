@@ -122,7 +122,8 @@ function evalChosenAnswer(target){
     if (target === questionArray[count].answer) {
         newScore = score + 15;
     } else {
-        newScore = score - 5;    
+        newScore = score - 5;  
+        timerCount = timerCount - 5;  
     }
     nextQuestion();
 };
@@ -131,7 +132,7 @@ function evalChosenAnswer(target){
 function endQuiz(){
     // stopping the timer and adding it to score
     function stopTimer(){
-        newScore = + timerCount;
+        newScore = newScore + timerCount;
         console.log(newScore); 
         console.log(timerContainer)
         removeAllChildNodes(timerContainer)
@@ -143,8 +144,15 @@ function endQuiz(){
     results.appendChild(finishedMessage);
     let scoreDisplay = document.querySelector(".score");
     scoreDisplay.textContent = `Your Score: ${newScore}`; 
-    
-    
+    let resetButton = document.createElement('button');
+    resetButton.textContent="Reset"
+    resetButton.setAttribute("class", "reset-btn")
+    results.append(resetButton);
+
+    resetButton.addEventListener("click", function(event){
+        event.preventDefault();
+        location.reload();
+    })
 };
 
 
