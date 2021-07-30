@@ -51,7 +51,4 @@ While creating this code quiz I:
 Deployed Application(GitHub Pages): https://mkotte.github.io/Code-Quiz
 
 GitHub Repository: https://github.com/mkotte/Code-Quiz
-<<<<<<< HEAD
 
-=======
->>>>>>> 88c342a32eb82852a29c2908e006c05863180f8f
